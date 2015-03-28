@@ -1,0 +1,13 @@
+@import "mixins/includes";
+
+@media #{$xlarge-only} {
+  html {
+    font-size: 125%;
+  }
+}
+
+@media #{$xxlarge-up} {
+  html {
+    font-size: 150%;
+  }
+}

@@ -1,0 +1,13 @@
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
+npm-debug.log
+.idea
+.DS_Store
+app/components
+.history
+.floo
+.flooignore
+*.iml

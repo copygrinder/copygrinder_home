@@ -1,0 +1,5 @@
+{
+  "box-model":false,
+  "fallback-colors": false,
+  "adjoining-classes": false
+}
