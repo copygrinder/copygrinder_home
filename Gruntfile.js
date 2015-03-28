@@ -315,13 +315,7 @@ module.exports = function (grunt) {
               '*.html',
               'images/**/*.{webp}',
               'fonts/*',
-              'components/foundation-icon-fonts/**/*.ttf',
-              'components/foundation-icon-fonts/**/*.woff',
-              'components/ckeditor/ckeditor.js',
-              'components/ckeditor/lang/en.js',
-              'components/ckeditor/contents.css',
-              'components/ckeditor/skins/moono/**',
-              'components/ckeditor/plugins/**'
+              'components/foundation-apps/iconic/*.svg'
             ]
           },
           {

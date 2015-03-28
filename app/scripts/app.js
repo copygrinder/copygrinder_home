@@ -3,10 +3,7 @@
 angular.module('copygrinderHome', [
   'ngResource',
   'ui.router',
-  'mm.foundation.accordion',
-  'mm.foundation.dropdownToggle',
-  'template/accordion/accordion-group.html',
-  'template/accordion/accordion.html'
+  'foundation'
 ]);
 
 angular.module('copygrinderHome').config(function($locationProvider) {
