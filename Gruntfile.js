@@ -556,6 +556,16 @@ module.exports = function (grunt) {
             to: 'url("../components/'
           }
         ]
+      },
+      fixDistIndex: {
+        src: ['dist/index.html'],
+        overwrite: true,
+        replacements: [
+          {
+            from: /href=\"http:\/\/localhost:9000\/"/g,
+            to: 'href="https://www.copygrinder.io/"'
+          }
+        ]
       }
     },
 
@@ -652,6 +662,7 @@ module.exports = function (grunt) {
     'newer:uglify:generated',
     'rev',
     'usemin',
+    'replace:fixDistIndex',
     'htmlmin'
   ]);
 
