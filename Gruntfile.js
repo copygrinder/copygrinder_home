@@ -530,6 +530,16 @@ module.exports = function (grunt) {
             to: 'href="https://www.copygrinder.io/"'
           }
         ]
+      },
+      fixDevDistIndex: {
+        src: ['dist/index.html'],
+        overwrite: true,
+        replacements: [
+          {
+            from: /href=\"http:\/\/localhost:9000\/"/g,
+            to: 'href="https://dev.www.copygrinder.io/"'
+          }
+        ]
       }
     },
 
@@ -663,6 +673,12 @@ module.exports = function (grunt) {
     'default',
     'replace:fixDistIndex'
   ]);
+
+  grunt.registerTask('buildDevProd', [
+    'default',
+    'replace:fixDevDistIndex'
+  ]);
+
 
   grunt.registerTask('toServer', [
     'default',
