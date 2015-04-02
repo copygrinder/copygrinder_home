@@ -33,7 +33,7 @@ module.exports = function (grunt) {
         livereload: true
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/**/*.js'],
+        files: ['<%= yeoman.app %>/pages/**/*.js'],
         tasks: ['newer:jshint:all', 'newer:copy:scripts'],
         options: {
           livereload: true
@@ -50,16 +50,12 @@ module.exports = function (grunt) {
         },
         tasks: ['prepare']
       },
-      less: {
-        files: ['app/styles/**/*.less'],
-        tasks: ['less', 'lesslint', 'newer:copy:styles', 'autoprefixer']
-      },
       sass: {
-        files: ['app/styles/**/*.scss'],
+        files: ['app/pages/**/*.scss'],
         tasks: ['newer:copy:styles', 'sass', 'csslint', 'autoprefixer']
       },
       angular: {
-        files: ['<%= yeoman.app %>/views/**'],
+        files: ['<%= yeoman.app %>/pages/**/*.html'],
         tasks: ['newer:htmllint', 'ngtemplates']
       },
       index: {
@@ -142,7 +138,7 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= yeoman.app %>/scripts/**/*.js'
+        '<%= yeoman.app %>/pages/**/*.js'
       ],
       test: {
         options: {
@@ -192,9 +188,9 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: '<%= yeoman.mainTmp %>/styles/',
+            cwd: '<%= yeoman.mainTmp %>/pages/',
             src: '**/*.css',
-            dest: '<%= yeoman.mainTmp %>/styles/'
+            dest: '<%= yeoman.mainTmp %>/pages/'
           }
         ]
       }
@@ -256,7 +252,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%= yeoman.dist %>',
-            src: ['*.html', 'views/**/*.html'],
+            src: ['*.html', 'pages/**/*.html'],
             dest: '<%= yeoman.dist %>'
           }
         ]
@@ -328,15 +324,15 @@ module.exports = function (grunt) {
       },
       scripts: {
         expand: true,
-        cwd: '<%= yeoman.app %>/scripts',
-        dest: '<%= yeoman.mainTmp %>/scripts/',
+        cwd: '<%= yeoman.app %>/pages',
+        dest: '<%= yeoman.mainTmp %>/pages/',
         src: '**/*.js'
       },
       styles: {
         expand: true,
-        cwd: '<%= yeoman.app %>/styles',
-        dest: '<%= yeoman.mainTmp %>/styles/',
-        src: '**/*.{css,less,scss}'
+        cwd: '<%= yeoman.app %>/',
+        dest: '<%= yeoman.mainTmp %>/',
+        src: ['pages/**/*.{css,scss}', 'foundation/**/*.{css,scss}']
       },
       cov1: {
         files: [
@@ -393,43 +389,11 @@ module.exports = function (grunt) {
       }
     },
 
-    less: {
-      development: {
-        options: {
-          paths: ['<%= yeoman.app %>/<%= yeoman.bowerComponents %>'],
-          sourceMap: true,
-          sourceMapBasepath: 'app/styles',
-          sourceMapURL: 'less.css.map'
-        },
-        files: [
-          {
-            expand: true,
-            dot: true,
-            cwd: '<%= yeoman.app %>',
-            dest: '<%= yeoman.mainTmp %>',
-            ext: '.css',
-            src: [
-              'styles/**/*.less'
-            ]
-          }
-        ]
-      }
-    },
-
-    lesslint: {
-      options: {
-        csslint: {
-          csslintrc: '.csslintrc'
-        }
-      },
-      src: ['<%= yeoman.app %>/styles/**.less']
-    },
-
     ngtemplates: {
       app: {
         cwd: '<%= yeoman.app %>',
-        src: 'views/**/**.html',
-        dest: '<%= yeoman.mainTmp %>/scripts/templates.js',
+        src: 'pages/**/**.html',
+        dest: '<%= yeoman.mainTmp %>/pages/templates.js',
         options: {
           htmlmin: {collapseWhitespace: true, collapseBooleanAttributes: true},
           module: 'copygrinderHome'
@@ -450,7 +414,7 @@ module.exports = function (grunt) {
     },
 
     instrument: {
-      files: '<%= yeoman.mainTmp %>/scripts/**/**.js',
+      files: '<%= yeoman.mainTmp %>/pages/**/**.js',
       options: {
         lazy: false,
         basePath: '<%= yeoman.covTmpInst %>'
@@ -481,7 +445,7 @@ module.exports = function (grunt) {
         files: [
           {
             expand: false,
-            src: ['<%= yeoman.app %>/*.html', '<%= yeoman.app %>/views/**/*.html']
+            src: ['<%= yeoman.app %>/*.html', '<%= yeoman.app %>/pages/**/*.html']
           }
         ]
       },
@@ -509,7 +473,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%= yeoman.app %>/',
-            src: ['views/**/*.html'],
+            src: ['pages/**/*.html'],
             dest: '.tmp/accessibility',
             ext: '-report.txt'
           }
@@ -577,9 +541,9 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: '<%= yeoman.mainTmp %>/styles/',
-            src: '**/*.scss',
-            dest: '<%= yeoman.mainTmp %>/styles/',
+            cwd: '<%= yeoman.mainTmp %>/',
+            src: ['pages/**/*.scss', 'foundation/**/*.scss'],
+            dest: '<%= yeoman.mainTmp %>/',
             ext: '.scss.css'
           }
         ]
@@ -591,7 +555,7 @@ module.exports = function (grunt) {
         csslintrc: '.csslintrc'
       },
       app: {
-        src: ['<%= yeoman.mainTmp %>/styles/global.scss.css', '<%= yeoman.mainTmp %>/styles/pages/**/*.css']
+        src: ['<%= yeoman.mainTmp %>/pages/global.scss.css', '<%= yeoman.mainTmp %>/pages/pages/**/*.css']
       }
     },
 
@@ -662,7 +626,6 @@ module.exports = function (grunt) {
     'newer:uglify:generated',
     'rev',
     'usemin',
-    'replace:fixDistIndex',
     'htmlmin'
   ]);
 
@@ -675,7 +638,6 @@ module.exports = function (grunt) {
     'copy:tmp',
     'copy:styles',
     'copy:scripts',
-    'less',
     'sass',
     'csslint',
     'autoprefixer',
@@ -695,6 +657,11 @@ module.exports = function (grunt) {
     'bower:install',
     'prepare',
     'build'
+  ]);
+
+  grunt.registerTask('buildProd', [
+    'default',
+    'replace:fixDistIndex'
   ]);
 
   grunt.registerTask('toServer', [
