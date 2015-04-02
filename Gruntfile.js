@@ -626,7 +626,6 @@ module.exports = function (grunt) {
     'newer:uglify:generated',
     'rev',
     'usemin',
-    'replace:fixDistIndex',
     'htmlmin'
   ]);
 
@@ -658,6 +657,11 @@ module.exports = function (grunt) {
     'bower:install',
     'prepare',
     'build'
+  ]);
+
+  grunt.registerTask('buildProd', [
+    'default',
+    'replace:fixDistIndex'
   ]);
 
   grunt.registerTask('toServer', [
