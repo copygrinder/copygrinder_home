@@ -537,7 +537,7 @@ module.exports = function (grunt) {
         replacements: [
           {
             from: /href=\"http:\/\/localhost:9000\/"/g,
-            to: 'href="https://dev.www.copygrinder.io/"'
+            to: 'href="http://dev.www.copygrinder.io/"'
           }
         ]
       }
