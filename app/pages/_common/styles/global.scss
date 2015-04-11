@@ -1,1 +1,9 @@
 @import "mixins/includes";
+
+.grid-container {
+  width: 100%;
+}
+
+.grid-content {
+  overflow-y: visible;
+}
