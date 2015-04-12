@@ -4,7 +4,7 @@
 
   var buildQueryDirective = function (name, dataFunc) {
 
-    angular.module('copygrinderHome').directive(name, function (copygrinderService) {
+    angular.module('copygrinderHome').directive(name, ['copygrinderService', function (copygrinderService) {
 
       var cgDirective = {};
 
@@ -25,7 +25,7 @@
       };
 
       return cgDirective;
-    });
+    }]);
   };
 
   buildQueryDirective('cgQuery', function (data) {
