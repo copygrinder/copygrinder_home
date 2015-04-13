@@ -1,17 +1,36 @@
-<div class="vertical grid-frame" data-cg-singleton-query="enforcedTypeIds=homepage as homepage">
+<div class="vertical grid-frame" data-cg-singleton-query="enforcedTypeIds=homepage&amp;expand=* as homepage">
     <div class="shrink collapse grid-content">
-        <nav class="primary title-bar">
+        <nav class="title-bar">
             <div class="grid-container">
+                <div class="grid-content float-left">
+                    <span class="title">
+                        <span class="logo-copy">Copy</span><span class="logo-grinder">grinder</span>
+                    </span>
+                </div>
                 <div class="grid-content">
-                    <span class="title">{{homepage.title}}</span>
+                    <span class="float-right menu-item">
+                        <a href="https://github.com/copygrinder/copygrinder">GitHub</a>
+                    </span>
                 </div>
             </div>
         </nav>
     </div>
-    <div class="grid-block">
+    <div class="grid-block vertical">
+        <div class="hero shrink grid-block vertical align-center">
+            <div class="grid-container">
+                <div class="grid-content">
+                    {{homepage['hero-tagline']}}
+                </div>
+            </div>
+        </div>
+
         <div class="grid-container">
-            <div class="grid-content">
-                <h1>Coming Soon</h1>
+            <div data-ng-repeat="point in homepage['talking-points']">
+                <div class="grid-content">
+                    <h2>{{point.expand.content.title}}</h2>
+                </div>
+                <div class="grid-content" data-ng-bind-html="point.expand.content.text | sanitize">
+                </div>
             </div>
         </div>
     </div>

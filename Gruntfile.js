@@ -51,7 +51,7 @@ module.exports = function (grunt) {
         tasks: ['prepare']
       },
       sass: {
-        files: ['app/pages/**/*.scss'],
+        files: ['app/pages/**/*.scss', 'app/foundation/**/*.scss'],
         tasks: ['newer:copy:styles', 'sass', 'csslint', 'autoprefixer']
       },
       angular: {

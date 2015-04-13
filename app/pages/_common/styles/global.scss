@@ -1,9 +1,57 @@
 @import "mixins/includes";
 
+@include breakpoint(xlarge) {
+  html {
+    font-size: 120%;
+  }
+}
+
 .grid-container {
   width: 100%;
 }
 
 .grid-content {
   overflow-y: visible;
+}
+
+.hero {
+  background-color: $dark-green;
+  background-image: url('http://www.transparenttextures.com/patterns/batthern.png');
+  height: 14rem;
+  color: white;
+  font-size: 3.4rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+
+  @include breakpoint(medium down) {
+    font-size: 3rem;
+  }
+}
+
+.title-bar {
+  background-color: white;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.logo-copy {
+  color: $dark-brown;
+}
+
+.logo-grinder {
+  color: $dark-green;
+}
+
+.menu-item {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  color: $dark-green;
 }

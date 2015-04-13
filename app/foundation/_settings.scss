@@ -1,1 +1,22 @@
-@import "../components/foundation-apps/scss/settings";
+@import "../components/foundation-apps/scss/helpers/functions";
+@import "../components/foundation-apps/scss/helpers/mixins";
+$foundation-version: '1.1.0';
+@import "../components/foundation-apps/scss/helpers/breakpoints";
+
+$dark-brown: #6C3600;
+$light-brown: #85511B;
+$red-brown: #9E2808;
+$dark-green: #00AA46;
+$light-green: #38D14C;
+
+$primary-color: $light-brown;
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+
+$body-font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+
+$container-width: rem-calc(1200);
+
+$paragraph-font-size: 1.3rem;
+
+@import "../components/foundation-apps/scss/global";
